@@ -10,6 +10,9 @@ import fantasyImg from "../../assets/fantasy.png";
 import musicImg from "../../assets/music.png";
 import fictionImg from "../../assets/fiction.png";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { setCategories } from "../../redux/slices/categorySlice";
 
 const categories = [
   {
@@ -72,6 +75,9 @@ const Categories = () => {
   const [selectedCategories,setSelectedCategories] = useState([])
   const [error,setError] = useState("")
 
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+
   const handleCategoryClick = (categoryName) => {
     if(selectedCategories.includes(categoryName)){
       setSelectedCategories(
@@ -92,7 +98,9 @@ const Categories = () => {
       return;
     }
 
-    console.log(selectedCategories)
+    dispatch(setCategories(selectedCategories))
+
+    navigate("/dashboard")
   }
 
   return (
