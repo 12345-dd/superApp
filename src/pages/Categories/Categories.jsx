@@ -1,15 +1,123 @@
-import React from 'react'
-import { useSelector } from 'react-redux'
+import "./Categories.css";
+
+import actionImg from "../../assets/action.png";
+import dramaImg from "../../assets/drama.png";
+import romanceImg from "../../assets/romance.png";
+import thrillerImg from "../../assets/thriller.png";
+import westernImg from "../../assets/western.png";
+import horrorImg from "../../assets/horror.png";
+import fantasyImg from "../../assets/fantasy.png";
+import musicImg from "../../assets/music.png";
+import fictionImg from "../../assets/fiction.png";
+
+const categories = [
+  {
+    id: 1,
+    name: "Action",
+    color: "#FF5209",
+    image: actionImg,
+  },
+  {
+    id: 2,
+    name: "Drama",
+    color: "#D7A4FF",
+    image: dramaImg,
+  },
+  {
+    id: 3,
+    name: "Romance",
+    color: "#148A08",
+    image: romanceImg,
+  },
+  {
+    id: 4,
+    name: "Thriller",
+    color: "#84C2FF",
+    image: thrillerImg,
+  },
+  {
+    id: 5,
+    name: "Western",
+    color: "#9F3500",
+    image: westernImg,
+  },
+  {
+    id: 6,
+    name: "Horror",
+    color: "#7358FF",
+    image: horrorImg,
+  },
+  {
+    id: 7,
+    name: "Fantasy",
+    color: "#FF4ADE",
+    image: fantasyImg,
+  },
+  {
+    id: 8,
+    name: "Music",
+    color: "#E61E32",
+    image: musicImg,
+  },
+  {
+    id: 9,
+    name: "Fiction",
+    color: "#6CD061",
+    image: fictionImg,
+  },
+];
 
 const Categories = () => {
-  const user = useSelector((state) => state.user)
-
   return (
-    <div>
-      <h1>Categories</h1>
-      <pre>{JSON.stringify(user,null,2)}</pre>
-    </div>
-  )
-}
+    <div className="categories-page">
+      <div className="left-panel">
+        <h1 className="logo">Super app</h1>
 
-export default Categories
+        <h2 className="heading">
+          Choose your
+          <br />
+          entertainment
+          <br />
+          category
+        </h2>
+
+        <div className="selected-categories">
+          <span>Romance ✕</span>
+          <span>Music ✕</span>
+          <span>Action ✕</span>
+        </div>
+
+        <p className="error-message">
+          ⚠ Minimum 3 category required
+        </p>
+      </div>
+
+      <div className="right-panel">
+        <div className="cards-container">
+          {categories.map((category) => (
+            <div
+              key={category.id}
+              className="category-card"
+              style={{
+                backgroundColor: category.color,
+              }}
+            >
+              <h3>{category.name}</h3>
+
+              <img
+                src={category.image}
+                alt={category.name}
+              />
+            </div>
+          ))}
+        </div>
+
+        <button className="next-btn">
+          Next Page
+        </button>
+      </div>
+    </div>
+  );
+};
+
+export default Categories;
