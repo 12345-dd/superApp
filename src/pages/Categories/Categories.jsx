@@ -9,6 +9,7 @@ import horrorImg from "../../assets/horror.png";
 import fantasyImg from "../../assets/fantasy.png";
 import musicImg from "../../assets/music.png";
 import fictionImg from "../../assets/fiction.png";
+import { useState } from "react";
 
 const categories = [
   {
@@ -68,6 +69,32 @@ const categories = [
 ];
 
 const Categories = () => {
+  const [selectedCategories,setSelectedCategories] = useState([])
+  const [error,setError] = useState("")
+
+  const handleCategoryClick = (categoryName) => {
+    if(selectedCategories.includes(categoryName)){
+      setSelectedCategories(
+        selectedCategories.filter(item => item !== categoryName)
+      )
+    }else{
+      setSelectedCategories([
+        ...selectedCategories, categoryName
+      ])
+    }
+
+    setError("")
+  }
+
+  const handleNext = () => {
+    if(selectedCategories.length < 3){
+      setError("Minimum 3 category required")
+      return;
+    }
+
+    console.log(selectedCategories)
+  }
+
   return (
     <div className="categories-page">
       <div className="left-panel">
@@ -82,14 +109,26 @@ const Categories = () => {
         </h2>
 
         <div className="selected-categories">
-          <span>Romance ✕</span>
-          <span>Music ✕</span>
-          <span>Action ✕</span>
+          {selectedCategories.map((category) => (
+            <span key={category}>
+              {category}
+
+              <button 
+                type="button" 
+                onClick={() => handleCategoryClick(category)}
+              >
+                X
+                </button>
+            </span>
+          ))}
         </div>
 
-        <p className="error-message">
-          ⚠ Minimum 3 category required
-        </p>
+        {error && (
+          <p className="error-message">
+            &#9888; {error}
+          </p>
+        )}
+
       </div>
 
       <div className="right-panel">
@@ -97,10 +136,13 @@ const Categories = () => {
           {categories.map((category) => (
             <div
               key={category.id}
-              className="category-card"
+              className={`category-card ${
+                selectedCategories.includes(category.name) ? "selected-card" : ""
+              }`}
               style={{
                 backgroundColor: category.color,
               }}
+              onClick = {() => handleCategoryClick(category.name)}
             >
               <h3>{category.name}</h3>
 
@@ -112,7 +154,7 @@ const Categories = () => {
           ))}
         </div>
 
-        <button className="next-btn">
+        <button className="next-btn" onClick={handleNext}>
           Next Page
         </button>
       </div>
