@@ -121,3 +121,14 @@
 .privacy-text{
   margin-top: 15px;
 }
+
+.error-input{
+  border: 1px solid #ff0000;
+}
+
+.error-text{
+  color: #ff0000;
+  font-size: 12px;
+  margin-top: -12px;
+  margin-bottom: 12px;
+}
