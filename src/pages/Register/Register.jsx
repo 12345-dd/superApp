@@ -2,12 +2,27 @@ import React from 'react'
 import registerImage from "../../assets/register-image.png"
 import "./Register.css"
 import { useForm } from 'react-hook-form';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { setUser } from '../../redux/slices/userSlice';
  
 const Register = () => {
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
+
     const {register, handleSubmit, formState: {errors}} = useForm();
 
     const submitHandler = (data) => {
-        console.log(data)
+        dispatch(
+            setUser({
+                name: data.name,
+                username: data.username,
+                email: data.email,
+                mobile: data.mobile
+            })
+        )
+
+        navigate("/categories")
     }
 
   return (
