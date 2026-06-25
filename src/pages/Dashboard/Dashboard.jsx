@@ -3,6 +3,8 @@ import "./Dashboard.css";
 
 import UserCard from "../../components/UserCard/UserCard";
 import Notes from '../../components/Notes/Notes';
+import Weather from '../../components/Weather/Weather';
+import News from '../../components/News/News';
 
 const Dashboard = () => {
   return (
@@ -12,7 +14,7 @@ const Dashboard = () => {
           <UserCard />
 
           <div className="weather-card">
-            Weather Widget
+            <Weather />
           </div>
         </div>
 
@@ -21,7 +23,7 @@ const Dashboard = () => {
         </div>
 
         <div className="news-card">
-          News Widget
+          <News />
         </div>
 
         <div className="timer-card">
