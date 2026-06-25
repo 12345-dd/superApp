@@ -6,8 +6,11 @@ import Notes from '../../components/Notes/Notes';
 import Weather from '../../components/Weather/Weather';
 import News from '../../components/News/News';
 import Timer from '../../components/Timer/Timer';
+import { useNavigate } from 'react-router-dom';
 
 const Dashboard = () => {
+   const navigate = useNavigate()
+
   return (
     <div className="dashboard-page">
       <div className="dashboard-container">
@@ -31,7 +34,10 @@ const Dashboard = () => {
           <Timer />
         </div>
 
-        <button className="browse-btn">
+        <button 
+          className="browse-btn"
+          onClick={() => navigate("/movies")}
+        >
           Browse
         </button>
       </div>

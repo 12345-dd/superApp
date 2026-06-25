@@ -137,6 +137,7 @@
   cursor: pointer;
 }
 
-.start-btn:hover {
-    box-shadow: 0 8px 20px rgba(255, 106, 106, 0.35)
+.start-btn:active {
+  transform: translateY(4px);
+  box-shadow: 0 2px 8px rgba(255, 106, 106, 0.25);
 }
