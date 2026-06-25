@@ -25,7 +25,7 @@ const News = () => {
 
     const interval = setInterval(() => {
       setCurrentIndex(prev => (prev+1) % newsList.length)
-    },2000)
+    },5000)
 
     return () => clearInterval(interval)
   },[newsList])
@@ -59,7 +59,7 @@ const News = () => {
       <div className="news-image-section">
 
         <img
-          src={news.image}
+          src={news.urlToImage}
           alt={news.title}
         />
 
