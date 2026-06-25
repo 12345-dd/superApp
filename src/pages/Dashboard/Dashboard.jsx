@@ -1,29 +1,39 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
+import "./Dashboard.css";
+
+import UserCard from "../../components/UserCard/UserCard";
+import Notes from '../../components/Notes/Notes';
 
 const Dashboard = () => {
-  const user = useSelector((state) => state.user)
-  const categories = useSelector((state) => state.category.selectedCategories)
-
   return (
-    <div style={{color:"white", padding:"40px"}}>
-      <h1>Dashboard</h1>
-      <hr />
-      
-      <h2>User</h2>
-      <pre>
-        {JSON.stringify(user,null,2)}
-      </pre>
+    <div className="dashboard-page">
+      <div className="dashboard-container">
+        <div className="left-section">
+          <UserCard />
 
-      <hr />
+          <div className="weather-card">
+            Weather Widget
+          </div>
+        </div>
 
-      <h2>Categories</h2>
+        <div className='notes-wrapper'>
+          <Notes />
+        </div>
 
-      <pre>
-        {JSON.stringify(categories,null,2)}
-      </pre>
+        <div className="news-card">
+          News Widget
+        </div>
+
+        <div className="timer-card">
+          Timer Widget
+        </div>
+
+        <button className="browse-btn">
+          Browse
+        </button>
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default Dashboard
+export default Dashboard;
