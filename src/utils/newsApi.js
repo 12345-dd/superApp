@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_KEY = "f44d020b70bf261f46531a2263760fca";
+const API_KEY = import.meta.env.VITE_NEWS_API_KEY;
 
 export const getNews = async () => {
   const response = await axios.get(
