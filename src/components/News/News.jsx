@@ -59,22 +59,22 @@ const News = () => {
       <div className="news-image-section">
 
         <img
-          src={news.image}
+          src={news.image_url}
           alt={news.title}
         />
 
         <div className="news-overlay">
           <h2>{news.title}</h2>
 
-          <p>
+          {/* <p>
             {date} | {time}
-          </p>
+          </p> */}
         </div>
 
       </div>
 
       <div className="news-content">
-        {news.content}
+        {news.summary}
       </div>
 
     </div>
