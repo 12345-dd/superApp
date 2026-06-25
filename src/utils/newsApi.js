@@ -17,7 +17,9 @@ export const getNews = async () => {
 
     console.log(response.data)
     return response.data.articles;
-  } catch (error) {
+  }catch (error) {
+    console.log("STATUS:", error.response?.status);
+    console.log("DATA:", error.response?.data);
     console.log(error);
     return [];
   }
