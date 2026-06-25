@@ -5,6 +5,7 @@ import UserCard from "../../components/UserCard/UserCard";
 import Notes from '../../components/Notes/Notes';
 import Weather from '../../components/Weather/Weather';
 import News from '../../components/News/News';
+import Timer from '../../components/Timer/Timer';
 
 const Dashboard = () => {
   return (
@@ -27,7 +28,7 @@ const Dashboard = () => {
         </div>
 
         <div className="timer-card">
-          Timer Widget
+          <Timer />
         </div>
 
         <button className="browse-btn">

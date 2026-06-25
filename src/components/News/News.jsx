@@ -60,7 +60,7 @@ const News = () => {
       </div>
 
       <div className="news-content">
-        {news.description}
+        {news.content}
       </div>
 
     </div>
