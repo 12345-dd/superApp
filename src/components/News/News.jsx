@@ -3,13 +3,15 @@ import "./News.css";
 import { getNews } from "../../utils/newsApi";
 
 const News = () => {
-  const [news, setNews] = useState(null);
+  const [newsList, setNewsList] = useState([]);
+  const [currentIndex, setCurrentIndex] = useState(0)
 
   useEffect(() => {
     const fetchNews = async () => {
       try {
         const data = await getNews();
-        setNews(data);
+        console.log(data)
+        setNewsList(data);
       } catch (error) {
         console.log(error);
       }
@@ -18,13 +20,25 @@ const News = () => {
     fetchNews();
   }, []);
 
-  if (!news) {
+  useEffect(() => {
+    if(newsList.length === 0) return;
+
+    const interval = setInterval(() => {
+      setCurrentIndex(prev => (prev+1) % newsList.length)
+    },2000)
+
+    return () => clearInterval(interval)
+  },[newsList])
+
+  if (newsList.length === 0) {
     return (
       <div className="news-widget">
         Loading News...
       </div>
     );
   }
+
+  const news = newsList[currentIndex]
 
   const dateObj = new Date(news.publishedAt);
 
