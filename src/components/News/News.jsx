@@ -59,7 +59,7 @@ const News = () => {
       <div className="news-image-section">
 
         <img
-          src={news.urlToImage}
+          src={news.image}
           alt={news.title}
         />
 
