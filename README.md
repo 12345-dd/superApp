@@ -47,6 +47,16 @@ VITE_WEATHER_API_KEY=YOUR_WEATHER_API_KEY
 VITE_MOVIES_API_KEY=YOUR_TMDB_API_KEY
 ```
 
+## NOTE 
+
+- This application is optimized for desktop view as per the provided Figma design. 
+
+## Known Issue
+
+The News API works in development but may fail in production due to CORS restrictions.
+
+![CORS Error Screenshot](./src/assets/cors-error.png)
+
 
 
 
